@@ -51,7 +51,7 @@ h1{
 
 
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0px;
     display: flex;
     justify-content: center;
@@ -61,6 +61,7 @@ footer{
     margin: 0;
     background-color: #a8dadc;
     color: #f1faee;
+    z-index: 1;
 }
 a{
     text-decoration: none;

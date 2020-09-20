@@ -31,6 +31,7 @@ const IndexPage = ({ data }) => {
             }
           }).then((res) => {
             console.log(res)
+            setShow(false)
           })
           .catch(err => console.log(err))
       }
