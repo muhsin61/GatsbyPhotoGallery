@@ -1,12 +1,15 @@
-import React from "react"
+import React,{useState} from "react"
 import { graphql } from "gatsby"
-import { Link } from "gatsby"
 import Img from "gatsby-image"
 import axios from "axios"
 
 import "./index.css"
 
 const IndexPage = ({ data }) => {
+
+  const [input,senInput] = useState("")
+  const [show,setShow] = useState(false)
+
   let addNewPhoto = (e) => {
     const file = e.target.files[0];
     const toBase64 = file => new Promise((resolve, reject) => {
@@ -16,43 +19,46 @@ const IndexPage = ({ data }) => {
       reader.onerror = error => reject(error);
     });
     toBase64(file).then(result => {
-      console.log("result " + result)
-      console.log("name " + file.name)
       putPhoto()
       async function putPhoto() {
         await axios.put(`https://api.github.com/repos/muhsin61/GatsbyPhotoGallery/contents/src/photos/${file.name}`, {
-          message: "kuynfdıyrd",
+          message: new Date,
           content: result.replace(/^(.+,)/, '')
         },
           {
             headers: {
-              'Authorization': "token "
+              'Authorization': `token ${input}` 
             }
           }).then((res) => {
-            console.log("res")
             console.log(res)
           })
           .catch(err => console.log(err))
       }
     })
   }
-
   return (
   <div>
-    <h1>Fotoğraf galerim</h1>
-      <div>
-        <input type="text"></input>
-        <input type="file" onChange={(e) => addNewPhoto(e)}></input>
-        <p>Seçtiğiniz anda eklenecekir.</p>
+    
+      <div className="addNewPhotoContainer" style={{ display: show ? "flex" : "none" }}>
+        <div className="backHome"  onClick={()=>setShow(false)}></div>
+        <div className="addNewPhoto">
+          <input placeholder="token" type="text" value={input} onChange={(e)=>senInput(e.target.value)}></input><br/>
+          <input type="file" onChange={(e) => addNewPhoto(e)}></input>
+        </div>
       </div>
+      
+    <h1 >Fotoğraf galerim</h1>
+    <p className="showNewPhoto" onClick={()=>setShow(true)}>Yeni Fotoğraf Ekle</p>
 
     <div className="photos">
-
       {data.allFile.edges.map(({ node }) => {
-        return <Img key={node.id} fluid={node.childImageSharp.fluid} />
+        return <Img className="img" key={node.id} fluid={node.childImageSharp.fluid} />
       })}
-
     </div>
+
+    <footer>
+      <p>Kodlara <a href="https://github.com/muhsin61/GatsbyPhotoGallery">Github</a> üzerinden ulaşabilrisiniz.</p>
+    </footer>
   </div>)
 }
 
