@@ -1,0 +1,11 @@
+.photos{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
+}
+
+@media (max-width:10cm){
+    .photos{
+        gap:2px;
+    }
+}
