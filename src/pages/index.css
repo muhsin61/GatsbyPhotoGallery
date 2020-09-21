@@ -29,7 +29,7 @@ h1{
 .backHome{
     width: 100%;
     height: 100vh;
-    z-index: 2;
+    z-index: 1;
     background-color: black;
     opacity: 0.8;
     position: absolute;
@@ -42,21 +42,49 @@ h1{
 
 
 .img{
-    transition: 0.5s;
-    z-index: 1;
+    z-index: 2;
 }
-.img:hover{
+.img2{
+    height: 100%;
+    transition: 0.5s;
+}
+.img2:hover{
     transform: rotate(3deg);
+}
+
+img{
+    width: 90%;
+    height: auto;
+    z-index: 5;
+}
+.bigImg{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 5;
+}
+.imgBack{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.8;
+    z-index: 4;
 }
 
 
 footer{
     position: relative;
     bottom: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    text-align: center;
     width: 100%;
+    top: auto;
     padding: 0px;
     margin: 0;
     background-color: #a8dadc;
