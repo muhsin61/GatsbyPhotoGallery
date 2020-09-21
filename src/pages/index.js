@@ -63,11 +63,12 @@ const IndexPage = ({ data }) => {
         return <div key={node.id} className="img" onClick={()=>showPhoto(node.childImageSharp.fluid)}><Img className="img2"  fluid={node.childImageSharp.fluid} /></div>
       })}
     </div>
-    {bigImg ? (<div className="bigImg">
-      <div className="imgBack" onClick={()=>setBigImg(false)}></div>
-      <img src={bigImgSrc} alt="there is  no img" />
-    </div>
-) : null}
+    {bigImg ? (
+      <div className="bigImg">
+        <div className="imgBack" onClick={()=>setBigImg(false)}></div>
+        <img src={bigImgSrc} alt="there is  no img" />
+      </div>
+    ) : null}
     
     <footer>
       <p>Kodlara <a href="https://github.com/muhsin61/GatsbyPhotoGallery">Github</a> üzerinden ulaşabilrisiniz.</p>
