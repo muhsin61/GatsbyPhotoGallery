@@ -1,152 +1,147 @@
-body{
-    background: #f1faee;
+body {
+  background: #f1faee;
 }
-.photos{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 30px;
+.photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
 }
-h1{
-    width: 100%;
-    text-align: center;
-    color: aliceblue;
-    background-color: #457b9d;
-    padding: 5px;
+h1 {
+  width: 100%;
+  text-align: center;
+  color: aliceblue;
+  background-color: #457b9d;
+  padding: 5px;
 }
-.showNewPhoto{
-    color: #457b9d;
+.showNewPhoto {
+  color: #457b9d;
+}
+.addNewPhotoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 3;
+}
+.backHome {
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.8;
+  position: absolute;
+}
+.addNewPhoto {
+  max-width: 30%;
+  z-index: 3;
+}
+.img {
+  z-index: 2;
+}
+.img2 {
+  height: 100%;
+  transition: 0.5s;
+}
+.img2:hover {
+  transform: rotate(3deg);
+}
+img {
+  display: flex;
+  width: 90%;
+  height: auto;
+  z-index: 5;
+  overflow: scroll;
+}
+.bigImg {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 5;
+}
+.imgBack {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 4;
+}
+.bigimg {
+  width: auto;
+  height: 80vh;
+}
+footer {
+  position: relative;
+  bottom: 0px;
+  display: block;
+  text-align: center;
+  width: 100%;
+  top: auto;
+  padding: 0px;
+  margin: 0;
+  background-color: #a8dadc;
+  color: #f1faee;
+  z-index: 1;
+}
+a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #e63946;
+}
+.showNewPhoto {
+  position: absolute;
+  top: 12px;
+  left: -150px;
+  z-index: 5;
+  color: #fffffd;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.showNewPhoto::after {
+  content: ">";
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  background: #e63946;
+  border-radius: 0px 5px 5px 0px;
+  padding: 5px;
+  font-weight: 900;
+}
+.showNewPhoto:hover {
+  left: 0px;
 }
 
-.addNewPhotoContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    z-index: 3;
+@media (max-width: 20cm) {
+  .photos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
 }
-.backHome{
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-    background-color: black;
-    opacity: 0.8;
-    position: absolute;
-
-}
-.addNewPhoto{
-    max-width: 30%;
-    z-index: 3;
-}
-.img{
-    z-index: 2;
-}
-.img2{
-    height: 100%;
-    transition: 0.5s;
-}
-.img2:hover{
-    transform: rotate(3deg);
-}
-img{
-    display: flex;
+@media (max-width: 10cm) {
+  .photos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  .showNewPhoto {
+    left: -138px;
+    top: 6px;
+  }
+  .bigimg {
     width: 90%;
     height: auto;
-    z-index: 5;
-    overflow: scroll;
-}
-.bigImg{
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 5;
-}
-.imgBack{
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: black;
-    opacity: 0.8;
-    z-index: 4;
-}
-.bigimg{
-    width: auto;
-    height: 80vh;
-}
-footer{
-    position: relative;
-    bottom: 0px;
-    display: block;
-    text-align: center;
-    width: 100%;
-    top: auto;
-    padding: 0px;
-    margin: 0;
-    background-color: #a8dadc;
-    color: #f1faee;
-    z-index: 1;
-}
-a{
-    text-decoration: none;
-    font-weight: 600;
-    color: #e63946;
-}
-.showNewPhoto{
-    position: absolute;
-    top: 12px;
-    left: -150px;
-    z-index: 5;
-    color: #fffffd;
-    transition: 0.5s;
-    cursor: pointer;
-}
-.showNewPhoto::after{
-    content: ">";
-    top: 5px;
-    width: 20px;
-    height: 20px;
-    color: #ffffff;
-    background: #e63946;
-    border-radius: 0px 5px 5px 0px;
-    padding: 5px;
-    font-weight: 900;
-}
-.showNewPhoto:hover{
-    left: 0px;
-}
-
-@media (max-width:20cm){
-    .photos{
-        grid-template-columns: repeat(3,1fr);
-        gap:10px;
-    }
-}
-@media (max-width:10cm){
-    .photos{
-        grid-template-columns: repeat(2,1fr);
-        gap:2px;
-    }
-    h1{
-        font-size: 25px;
-    }
-    .showNewPhoto{
-        left: -135px;
-        top: 6px;
-    }
-    .showNewPhoto::after{
-        padding-left: 8px;
-    }
-    .bigimg{
-        width: 90%;
-        height: auto;
-    }
-    footer{
-        font-size: 15px;
-    }
+  }
+  footer {
+    font-size: 15px;
+  }
 }
