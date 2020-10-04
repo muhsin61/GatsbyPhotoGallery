@@ -135,6 +135,9 @@ a{
         left: -135px;
         top: 6px;
     }
+    .showNewPhoto::after{
+        padding-left: 8px;
+    }
     footer{
         font-size: 15px;
     }
