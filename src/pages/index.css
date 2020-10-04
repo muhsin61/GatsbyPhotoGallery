@@ -39,8 +39,6 @@ h1{
     max-width: 30%;
     z-index: 3;
 }
-
-
 .img{
     z-index: 2;
 }
@@ -51,7 +49,6 @@ h1{
 .img2:hover{
     transform: rotate(3deg);
 }
-
 img{
     display: flex;
     width: 90%;
@@ -78,8 +75,6 @@ img{
     opacity: 0.8;
     z-index: 4;
 }
-
-
 footer{
     position: relative;
     bottom: 0px;
@@ -98,13 +93,29 @@ a{
     font-weight: 600;
     color: #e63946;
 }
-
-
-
-
-
-
-
+.showNewPhoto{
+    position: absolute;
+    top: 12px;
+    left: -150px;
+    z-index: 5;
+    color: #fffffd;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.showNewPhoto::after{
+    content: ">";
+    top: 5px;
+    width: 20px;
+    height: 20px;
+    color: #ffffff;
+    background: #e63946;
+    border-radius: 0px 5px 5px 0px;
+    padding: 5px;
+    font-weight: 900;
+}
+.showNewPhoto:hover{
+    left: 0px;
+}
 
 @media (max-width:20cm){
     .photos{
