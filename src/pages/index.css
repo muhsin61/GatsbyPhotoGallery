@@ -131,6 +131,10 @@ a{
     h1{
         font-size: 25px;
     }
+    .showNewPhoto{
+        left: -135px;
+        top: 6px;
+    }
     footer{
         font-size: 15px;
     }
