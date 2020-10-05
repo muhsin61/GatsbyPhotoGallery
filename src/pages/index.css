@@ -73,6 +73,18 @@ img {
   opacity: 0.8;
   z-index: 4;
 }
+.xBtn {
+  position: absolute;
+  margin-left: auto 0;
+  color: #e63946;
+  z-index: 1000;
+  top: 3%;
+  right: 3%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 30px;
+  font-weight: 900;
+  cursor: pointer;
+}
 .bigimg {
   width: auto;
   height: 80vh;
@@ -140,6 +152,9 @@ a {
   .bigimg {
     width: 90%;
     height: auto;
+  }
+  .xBtn{
+    right: 5%;
   }
   footer {
     font-size: 15px;
