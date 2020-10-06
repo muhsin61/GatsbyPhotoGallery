@@ -66,7 +66,6 @@ const IndexPage = ({ data }) => {
       </div>
       {bigImg ? (
         <div className="bigImg">
-          <div className="xBtn" onClick={() => setBigImg(false)}>X</div>
           <div className="imgBack" onClick={() => setBigImg(false)}></div>
           <img className="bigimg" src={bigImgSrc} alt="there is  no img" />
         </div>
