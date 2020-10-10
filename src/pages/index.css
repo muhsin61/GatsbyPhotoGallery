@@ -34,8 +34,26 @@ h1 {
   position: absolute;
 }
 .addNewPhoto {
-  max-width: 30%;
+  max-width: 100%;
   z-index: 3;
+}
+.addNewPhoto input[type="text"] {
+  border: #e63946 1px solid;
+  position: relative;
+  width: 300px;
+  border: none;
+  background: none;
+  border-bottom: 5px #457b9d solid;
+  margin: 20px;
+  color: #e63946;
+  font-weight: 600;
+}
+.addNewPhoto input[type="file"] {
+  width: 300px;
+}
+.addNewPhoto input[type="text"]:focus,
+.addNewPhoto input[type="file"]:focus {
+  outline: none;
 }
 .img {
   z-index: 2;
@@ -71,9 +89,8 @@ img {
   height: 100vh;
   background-color: black;
   opacity: 0.8;
- 
 }
-.imgBack::after{
+.imgBack::after {
   content: "";
   position: absolute;
   width: 50px;
@@ -85,7 +102,7 @@ img {
   cursor: pointer;
   z-index: 6;
 }
-.imgBack::before{
+.imgBack::before {
   content: "";
   position: absolute;
   width: 50px;
@@ -165,12 +182,12 @@ a {
     width: 90%;
     height: auto;
   }
-  .imgBack::after{
+  .imgBack::after {
     width: 20px;
     height: 5px;
     top: 2px;
   }
-  .imgBack::before{
+  .imgBack::before {
     top: 2px;
     width: 20px;
     height: 5px;
