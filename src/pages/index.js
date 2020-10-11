@@ -14,31 +14,36 @@ const IndexPage = ({ data }) => {
   const [bigImgSrc, setBigImgSrc] = useState("")
 
   let addNewPhoto = (e) => {
-    const file = e.target.files[0];
-    const toBase64 = file => new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
-    toBase64(file).then(result => {
-      putPhoto()
-      async function putPhoto() {
-        await axios.put(`https://api.github.com/repos/muhsin61/GatsbyPhotoGallery/contents/src/photos/${file.name}`, {
-          message: new Date,
-          content: result.replace(/^(.+,)/, '')
-        },
-          {
-            headers: {
-              'Authorization': `token ${input}`
-            }
-          }).then((res) => {
-            console.log(res)
-            setShow(false)
-          })
-          .catch(err => console.log(err))
-      }
-    })
+    if(input != ""){
+      console.log("çalıştı")
+      const file = e.target.files[0];
+      const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+      toBase64(file).then(result => {
+        putPhoto()
+        async function putPhoto() {
+          await axios.put(`https://api.github.com/repos/muhsin61/GatsbyPhotoGallery/contents/src/photos/${file.name}`, {
+            message: new Date,
+            content: result.replace(/^(.+,)/, '')
+          },
+            {
+              headers: {
+                'Authorization': `token ${input}`
+              }
+            }).then((res) => {
+              console.log(res)
+              setShow(false)
+            })
+            .catch(err => alert("error"))
+        }
+      })
+    }else{
+      alert("There is not token.")
+    }
   }
   let showPhoto = (imgSrc) => {
     setBigImgSrc(imgSrc.src)
