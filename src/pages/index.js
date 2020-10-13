@@ -13,10 +13,13 @@ const IndexPage = ({ data }) => {
   const [bigImg, setBigImg] = useState(false)
   const [bigImgSrc, setBigImgSrc] = useState("")
 
-  const [toastrs,setToastrs] = useState(false)
+  const [toastrs,setToastrs] = useState([false,"err","test"])
 
-  const toaster = (message) => {
-    console.log(message)
+  const toaster = (header,message) => {
+    setTimeout(()=>{
+      setToastrs([false,header,message])
+    },2000)
+    setToastrs([true,header,message])
   }
 
   let addNewPhoto = (e) => {
@@ -42,15 +45,14 @@ const IndexPage = ({ data }) => {
               }
             }).then((res) => {
               console.log(res)
-              toaster("doğru")
+              toaster("doğru","resim eklendi")
               setShow(false)
             })
-            .catch(err => toaster("hata"))
+            .catch(err => toaster("hata","gönderme hatası"))
         }
       })
     }else{
-      toaster("there is no token")
-      alert("There is not token.")
+      toaster("hata","token yok")
     }
   }
   let showPhoto = (imgSrc) => {
@@ -83,7 +85,9 @@ const IndexPage = ({ data }) => {
           <img className="bigimg" src={bigImgSrc} alt="there is  no img" />
         </div>
       ) : null}
-      <div className="toastr"></div>
+      {
+        toastrs[0] ? <div className="toastr"><h2>{toastrs[1]}</h2><p>{toastrs[2]}</p></div> : null
+      }
       <footer>
         <p>Kodlara <a href="https://github.com/muhsin61/GatsbyPhotoGallery">Github</a> üzerinden ulaşabilrisiniz.</p>
       </footer>
