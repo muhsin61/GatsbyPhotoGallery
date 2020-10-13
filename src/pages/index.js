@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React,{ useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import axios from "axios"
@@ -13,8 +13,17 @@ const IndexPage = ({ data }) => {
   const [bigImg, setBigImg] = useState(false)
   const [bigImgSrc, setBigImgSrc] = useState("")
 
+  const [toastrs,setToastrs] = useState([false,"err","test"])
+
+  const toaster = (header,message) => {
+    setTimeout(()=>{
+      setToastrs([false,header,message])
+    },2000)
+    setToastrs([true,header,message])
+  }
+
   let addNewPhoto = (e) => {
-    if(input != ""){
+    if(input !== ""){
       console.log("çalıştı")
       const file = e.target.files[0];
       const toBase64 = file => new Promise((resolve, reject) => {
@@ -36,13 +45,14 @@ const IndexPage = ({ data }) => {
               }
             }).then((res) => {
               console.log(res)
+              toaster("doğru","resim eklendi")
               setShow(false)
             })
-            .catch(err => alert("error"))
+            .catch(err => toaster("hata","gönderme hatası"))
         }
       })
     }else{
-      alert("There is not token.")
+      toaster("hata","token yok")
     }
   }
   let showPhoto = (imgSrc) => {
@@ -75,7 +85,9 @@ const IndexPage = ({ data }) => {
           <img className="bigimg" src={bigImgSrc} alt="there is  no img" />
         </div>
       ) : null}
-
+      {
+        toastrs[0] ? <div className="toastr"><h2>{toastrs[1]}</h2><p>{toastrs[2]}</p></div> : null
+      }
       <footer>
         <p>Kodlara <a href="https://github.com/muhsin61/GatsbyPhotoGallery">Github</a> üzerinden ulaşabilrisiniz.</p>
       </footer>

@@ -159,7 +159,19 @@ a {
 .showNewPhoto:hover {
   left: 0px;
 }
-
+.toastr{
+  width: 300px;
+  height: 100px;
+  margin: 20px;
+  z-index: 20;
+  position: fixed;
+  color: #a8dadc;
+  top: 0;
+  right: 0;
+  background: #e63946;
+  border-radius: 5px;
+  text-align: center;
+}
 @media (max-width: 20cm) {
   .photos {
     grid-template-columns: repeat(3, 1fr);
