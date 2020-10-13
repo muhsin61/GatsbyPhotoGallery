@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React,{ useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import axios from "axios"
@@ -13,8 +13,14 @@ const IndexPage = ({ data }) => {
   const [bigImg, setBigImg] = useState(false)
   const [bigImgSrc, setBigImgSrc] = useState("")
 
+  const [toastrs,setToastrs] = useState(false)
+
+  const toaster = (message) => {
+    console.log(message)
+  }
+
   let addNewPhoto = (e) => {
-    if(input != ""){
+    if(input !== ""){
       console.log("çalıştı")
       const file = e.target.files[0];
       const toBase64 = file => new Promise((resolve, reject) => {
@@ -36,12 +42,14 @@ const IndexPage = ({ data }) => {
               }
             }).then((res) => {
               console.log(res)
+              toaster("doğru")
               setShow(false)
             })
-            .catch(err => alert("error"))
+            .catch(err => toaster("hata"))
         }
       })
     }else{
+      toaster("there is no token")
       alert("There is not token.")
     }
   }
@@ -75,7 +83,7 @@ const IndexPage = ({ data }) => {
           <img className="bigimg" src={bigImgSrc} alt="there is  no img" />
         </div>
       ) : null}
-
+      <div className="toastr"></div>
       <footer>
         <p>Kodlara <a href="https://github.com/muhsin61/GatsbyPhotoGallery">Github</a> üzerinden ulaşabilrisiniz.</p>
       </footer>
